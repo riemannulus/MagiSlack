@@ -11,10 +11,13 @@ with open("README.md", "r") as fh:
                 description="For a make easy and quick command-respond chat bot",
                 long_description=long_description,
                 long_description_content_type="text/markdown",
-                url="https://github.com/pypa/sampleproject",
+                url="https://github.com/riemannulus/MagiSlack",
                 packages=setuptools.find_packages(),
+                install_requires=[
+                        'slackclient',
+                ],
                 classifiers=[
-                            "Programming Language :: Python :: 3",
+                            "Programming Language :: Python :: 3.7.0",
                             "License :: OSI Approved :: MIT License",
                             "Operating System :: OS Independent",
                         ],
