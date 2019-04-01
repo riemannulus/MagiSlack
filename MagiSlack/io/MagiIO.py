@@ -38,7 +38,14 @@ class MagiIO:
             logging.info(f'message: {message["text"]}, user: {message["user"]}')
 
             if command in self.__callback_list:
-                return self.__callback_list[command](text_args)
+                response = self.__sc.api_call('users.info',
+                                               user=message['user'])
+                user_info = response['user']
+                user_profile = user_info['profile']
+                return self.__callback_list[command](text_args,
+                                                     name=user_info['name'],
+                                                     real_name=user_info['real_name'],
+                                                     display_name=user_profile['display_name'])
             else:
                 raise AttributeError
 
