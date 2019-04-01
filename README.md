@@ -9,9 +9,9 @@ MagiSlack is a fast, easy library for make command-respond style chat bot.
 from MagiSlack.io import MagiIO
 from MagiSlack.module import MagiModule
 
-def hello_world_callback(*args):
+def hello_world_callback(*args, **kwargs):
     name = args[0]
-    return f'Hello, {name}!'
+    return f'Hello, {kwargs['display_name']}!'
     
 if __name__ == '__main__':
     module = MagiModule.MagiModule('SLACK_API_KEY_HERE')
