@@ -5,7 +5,7 @@ from MagiSlack.module import MagiModule
 
 
 def hello_world(*args, **kwargs):
-    return "HELLO WORLD! from MAGI MODULE."
+    return f"HELLO WORLD! user {kwargs['name']}, {kwargs['display_name']}"
 
 
 if __name__ == '__main__':
