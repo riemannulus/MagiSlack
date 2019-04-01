@@ -42,7 +42,7 @@ class MagiIO:
                                                user=message['user'])
                 user_info = response['user']
                 user_profile = user_info['profile']
-                return self.__callback_list[command](text_args,
+                return self.__callback_list[command](*text_args,
                                                      name=user_info['name'],
                                                      real_name=user_info['real_name'],
                                                      display_name=user_profile['display_name'])
@@ -66,7 +66,7 @@ class MagiIO:
     def start(self):
         while True:
             # Check is connected
-            if not self.__connected:
+            if not self.connected:
                 self.__connection()
 
             # Start main logic
@@ -84,9 +84,9 @@ class MagiIO:
                     pass
                 except KeyError:
                     pass
-                except TypeError:
+                except TypeError as e:
                     logging.info('Callback function argument need *args.')
-                    print('Callback function argument need *args.')
+                    print('Callback function argument need *args. ' + str(e))
 
             sleep(1)
 
