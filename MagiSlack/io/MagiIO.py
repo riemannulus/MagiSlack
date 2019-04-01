@@ -30,9 +30,6 @@ class MagiIO:
         else:
             return False
 
-    def __connected(self):
-        return self.__sc.server.connected
-
     def __parse_message_and_exec_callback(self, message):
         if message['type'] == 'message' and message['text'][0] == self.__symbol:
             text_split = message['text'].split()
@@ -44,6 +41,9 @@ class MagiIO:
                 return self.__callback_list[command](text_args)
             else:
                 raise AttributeError
+
+    def connected(self):
+        return self.__sc.server.connected
 
     def set_callback_func(self, tag, callback):
         assert isfunction(callback)
